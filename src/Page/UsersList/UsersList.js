@@ -15,11 +15,10 @@ export default function UsersList() {
   const [userInfo, setUserInfo] = useState([{ name: null, email: null, gender: null, status: null, }]);  
   const [loading, setLoading] = useState(false);
   const users = new UserServices();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     users.getAllUsers().then(res => {
-      console.log(typeof res.data)
       setUserInfo(res.data)
       setLoading(true)
     });

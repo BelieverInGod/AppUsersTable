@@ -17,7 +17,7 @@ export default function OptionsInput( {option , setOption , options, label} ) {
         onInputChange={(event, newInputValue) => {
           setOption(newInputValue);
         }}
-        id="controllable-states-demo"
+        id={label}
         options={options}
         sx={{ width: 250 }}
         renderInput={(params) => <TextField {...params} label={label} />}

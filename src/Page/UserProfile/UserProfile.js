@@ -22,7 +22,7 @@ const inputConfig = {
 
 export default function UserProfile() {
   const users = new UserServices();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
@@ -56,18 +56,23 @@ export default function UserProfile() {
               <AccountCircle />
             </InputAdornment>
           ),
-        }} />
-          <TextField 
-            variant="standard" value={userEmail}
-            label="Email" 
-            sx={{ width: 250 }}
-            onChange={(event) => {setUserEmail(event.target.value);}}
-           />
+        }} 
+        />
+        <TextField 
+          variant="standard" value={userEmail}
+          label="Email" 
+          sx={{ width: 250 }}
+          onChange={(event) => {setUserEmail(event.target.value);}}
+        />
         {userGender && <OptionsInput option={userGender} setOption={setUserGender} options={inputConfig.gender.options} label={inputConfig.gender.label}/>}
         {userStatus && <OptionsInput option={userStatus} setOption={setUserStatus} options={inputConfig.status.options} label={inputConfig.status.label} />}
       </div>
       <div className='but'>
-        <Button variant="contained" sx={{ width: 250 }} size={'large'} onClick={() => {users.updateUser(id, {name: userName, email: userEmail, gender: userGender, status: userStatus}); linkRedirect()}}>update</Button>
+        <Button 
+          variant="contained" 
+          sx={{ width: 250 }}
+          size={'large'} onClick={() => {users.updateUser(id, {name: userName, email: userEmail, gender: userGender, status: userStatus});
+          linkRedirect()}}>update</Button>
       </div>
     </div>
   );
